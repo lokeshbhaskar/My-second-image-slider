@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slider</title>
+</head>
+<body>
+    <div class="container">
+        <img src="arrow2.png" class="Arrow left">
+        <div class="frame">
+            <div class="slider">
+                <img src="img1.jpg" class="image">
+                <img src="img2.jpg" class="image">
+                <img src="img3.png" class="image">
+                <img src="img4.webp" class="image">
+                <img src="img5.webp" class="image">
+                <img src="img6.jpg" class="image">
+                <!-- <img src="img7.jpg" class="image"> -->
+                <!-- <img src="img8.jpg" class="image"> -->
+                <!-- <img src="img9.jpg" class="image"> -->
+                <!-- <img src="img10.jpg" class="image"> -->
+            </div> <!--end slider-->
+        </div> <!--end frame-->    
+        <img src="arrow2.png" class="Arrow right"> 
+    </div> <!--end container -->
+</body>
+</html>
+ <!-- css code -->
+<style>
+body{
+     display: flex;
+     align-items: center; 
+     justify-content: center;
+     height: 80vh;
+     background-color:#63cdda;
+}
+.Arrow{
+    width: 30px;
+    height: 70px;
+    cursor: pointer;
+}
+.right{
+    transform: rotate(180deg);
+}
+.container{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.frame{
+    width: 650px;
+    height: 350px;
+    overflow: hidden;
+    box-shadow: -1px 1px 10px rgba(0, 0, 0, .5);
+}
+.slider{
+    display: flex;
+    transition: all 1s ease;
+}
+.image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+</style>
+
+<!-- javascript code -->
+<script>
+  const left = document.querySelector('.left');
+  const right = document.querySelector('.right');
+  const slider = document.querySelector('.slider');
+  const images= document.querySelectorAll('.image');
+
+slideNumber=1;
+const length= images.length;
+
+const nextSlide =()=>{
+    slider.style.transform= `translateX(-${slideNumber*620}px)`;
+        slideNumber++;
+}
+const prevSlide =()=>{
+    slider.style.transform= `translateX(-${(slideNumber-2)*620}px)`;
+        slideNumber--;
+}
+const firstImage=()=>{
+    slider.style.transform= `translateX(0px)`;
+         slideNumber=1;
+}
+const lastImage=()=>{
+    slider.style.transform= `translateX(-${(length-1)*620}px)`;
+         slideNumber=length;
+}
+
+  right.addEventListener('click',()=>{
+    if(slideNumber< length){
+        nextSlide();
+    }
+     else{
+         firstImage();
+     }
+  });
+left.addEventListener('click',()=>{
+  if(slideNumber>1){
+    prevSlide();
+  }
+  else{
+    lastImage();
+  }
+  });
+</script>
