@@ -11,15 +11,15 @@
         <div class="frame">
             <div class="slider">
                 <img src="img1.jpg" class="image">
-                <img src="img2.jpg" class="image">
-                <img src="img3.png" class="image">
-                <img src="img4.webp" class="image">
-                <img src="img5.webp" class="image">
-                <img src="img6.jpg" class="image">
+                <!-- <img src="img2.jpg" class="image"> -->
+                <!-- <img src="img3.png" class="image"> -->
+                <!-- <img src="img4.webp" class="image"> -->
+                <!-- <img src="img5.webp" class="image"> -->
+                <!-- <img src="img6.jpg" class="image"> -->
                 <!-- <img src="img7.jpg" class="image"> -->
-                <!-- <img src="img8.jpg" class="image"> -->
-                <!-- <img src="img9.jpg" class="image"> -->
-                <!-- <img src="img10.jpg" class="image"> -->
+                <img src="img8.jpg" class="image">
+                <img src="img9.jpg" class="image">
+                <img src="img10.jpg" class="image">
             </div> <!--end slider-->
         </div> <!--end frame-->    
         <img src="arrow2.png" class="Arrow right"> 
@@ -73,15 +73,19 @@ body{
   const images= document.querySelectorAll('.image');
 
 slideNumber=1;
+
 const length= images.length;
+console.log(length)
 
 const nextSlide =()=>{
     slider.style.transform= `translateX(-${slideNumber*620}px)`;
         slideNumber++;
+        // console.log(slideNumber);
 }
 const prevSlide =()=>{
     slider.style.transform= `translateX(-${(slideNumber-2)*620}px)`;
         slideNumber--;
+        // console.log(slideNumber)
 }
 const firstImage=()=>{
     slider.style.transform= `translateX(0px)`;
@@ -92,7 +96,7 @@ const lastImage=()=>{
          slideNumber=length;
 }
 
-  right.addEventListener('click',()=>{
+right.addEventListener('click',()=>{
     if(slideNumber< length){
         nextSlide();
     }
